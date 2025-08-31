@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier Schools Exhibition</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+    body {line-height:1.5; color:#222;}
+
+    /* Navbar */
+    header {background:#0b1a46; padding:15px 50px; display:flex; justify-content:space-between; align-items:center; color:#fff;}
+    header img {height:50px;}
+    nav ul {list-style:none; display:flex; gap:20px;}
+    nav ul li {display:inline;}
+    nav ul li a {color:#fff; text-decoration:none; font-weight:500; transition:0.3s;}
+    nav ul li a:hover {color:#f0c300;}
+
+    /* Hero */
+    .hero {display:flex; justify-content:space-between; align-items:center; padding:50px; background:linear-gradient(90deg,#0b1a46,#3d0b64); color:#fff;}
+    .hero-content {max-width:50%;}
+    .hero h1 {font-size:40px; margin-bottom:15px;}
+    .hero p {margin-bottom:20px;}
+    .hero .btn {background:#f0c300; color:#000; padding:10px 20px; border:none; cursor:pointer; font-weight:bold; border-radius:5px;}
+
+    /* Hero Slideshow */
+    .slideshow {width:45%; position:relative; overflow:hidden; border-radius:20px; height:400px;}
+    .slideshow img {width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s ease-in-out;}
+    .slideshow img.active {opacity:1;}
+
+    /* Enquiry Form */
+    .enquiry {background:rgba(255,255,255,0.1); padding:20px; border-radius:10px; margin-top:20px;}
+    .enquiry input, .enquiry textarea {width:100%; margin:10px 0; padding:10px; border:none; border-radius:5px;}
+    .enquiry button {width:100%; padding:12px; background:#f0c300; border:none; border-radius:5px; font-weight:bold; cursor:pointer;}
+
+    /* Stats */
+    .stats {display:flex; justify-content:space-around; padding:50px; background:#fafafa;}
+    .stat {text-align:center;}
+    .stat h2 {font-size:24px; color:#0b1a46;}
+
+    /* Schools */
+    .schools {padding:50px; text-align:center; background:#fff;}
+    .schools h2 {margin-bottom:30px;}
+    .logo-slider {overflow:hidden; position:relative; width:100%;}
+    .logos {display:flex; animation:scroll 20s linear infinite;}
+    .logos img {height:80px; margin:0 40px; object-fit:contain;}
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Choose School */
+    .choose {padding:50px; background:#fff;}
+    .choose h2 {text-align:center; margin-bottom:30px;}
+    .choose-cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;}
+    .card {background:#f8f8f8; border-radius:10px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+    .card img {width:100%; border-radius:10px; margin-bottom:15px;}
+
+    /* Pre-schedule (Gradient + Image blend) */
+    .schedule {
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      padding:80px;
+      height:450px;
+      color:white;
+
+      background: linear-gradient(to right, rgba(124, 56, 197, 0.95) 0%, rgba(124, 56, 197, 0.7) 40%, rgba(124, 56, 197, 0.3) 70%),
+                  url('assets/img/parent.png') center/cover no-repeat;
+    }
+    .schedule-content {max-width:500px;}
+    .schedule h2 {font-size:32px; margin-bottom:15px;}
+    .schedule p {font-size:18px; margin-bottom:20px;}
+    .schedule button {padding:15px 25px; border:none; background:#fff; color:#7c38c5; font-weight:bold; border-radius:5px; cursor:pointer;}
+
+    /* Why Visit */
+    .why {padding:50px; text-align:center; background:#fafafa;}
+    .why img {width:100%; height:auto; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+
+    /* Footer */
+    footer {background:#0b1a46; color:#fff; padding:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;}
+    footer h4 {margin-bottom:10px;}
+    footer a {color:#fff; text-decoration:none;}
+    .copyright {text-align:center; padding:15px; background:#08122e; color:#bbb;}
+
+    @media(max-width:768px){
+      .hero {flex-direction:column; text-align:center;}
+      .hero-content {max-width:100%;}
+      .slideshow {width:100%; margin-top:20px;}
+      .stats {flex-direction:column; gap:20px;}
+      .schedule {flex-direction:column; text-align:center; height:auto; padding:50px;}
+      .schedule-content {max-width:100%;}
+      .logos img {height:60px; margin:0 20px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <img src="assets/img/logo.jpeg" alt="Logo">
+    <nav>
+      <ul>
+        <li><a href="#schools">Schools</a></li>
+        <li><a href="#why">Why Visit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover Gurugram’s Top 30+ Schools</h1>
+      <p>All in one place! Join us on <strong>2-3 August 2025</strong> at Apparel House, Gurugram.</p>
+      <button class="btn">Register Now</button>
+
+      <div class="enquiry">
+        <h3>Enquire Now</h3>
+        <input type="text" placeholder="Parent's Name">
+        <input type="tel" placeholder="Phone Number">
+        <input type="text" placeholder="Which grade are you looking for?">
+        <button>Submit</button>
+      </div>
+    </div>
+
+    <div class="slideshow">
+      <img src="assets/img/child1.avif" class="active">
+      <img src="assets/img/child2.avif">
+      <img src="assets/img/child3.webp">
+      <img src="assets/img/child4.avif">
+      <img src="assets/img/child5.avif">
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat"><h2>1M+</h2><p>Trusted Parents</p></div>
+    <div class="stat"><h2>22+</h2><p>Years of Legacy</p></div>
+    <div class="stat"><h2>500+</h2><p>Participating Schools</p></div>
+    <div class="stat"><h2>17</h2><p>Cities Worldwide</p></div>
+  </section>
+
+  <!-- Schools -->
+  <section class="schools" id="schools">
+    <h2>Participating Schools</h2>
+    <div class="logo-slider">
+      <div class="logos">
+        <img src="assets/img/Group 1000004134.png">
+        <img src="assets/img/Group 1000004135.png">
+      </div>
+    </div>
+  </section>
+
+  <!-- Choose School -->
+  <section class="choose">
+    <h2>Choose the School That Fits You Best</h2>
+    <div class="choose-cards">
+      <div class="card"><img src="assets/img/01.png"><h3>Pre-Schools</h3><p>Nurturing foundational skills for toddlers and pre-primary children.</p></div>
+      <div class="card"><img src="assets/img/02.png"><h3>K-12 CBSE Schools</h3><p>Reputed schools offering complete schooling from Kindergarten to Grade 12.</p></div>
+      <div class="card"><img src="assets/img/03.png"><h3>Heritage to New-Age</h3><p>Time-tested schools with innovative pedagogy and future-ready learning.</p></div>
+      <div class="card"><img src="assets/img/04.png"><h3>International Curriculum</h3><p>IB, Cambridge, Finnish & more with global standards.</p></div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="schedule">
+    <div class="schedule-content">
+      <h2>Exciting Opportunities for Parents!</h2>
+      <p>Pre-schedule your school appointments to avoid rush.</p>
+      <button>Pre-Schedule Now</button>
+    </div>
+  </section>
+
+  <!-- Why Visit -->
+  <section class="why" id="why">
+    <img src="assets/img/What Makes This Exhibition a Must-Visit.png" alt="Why Visit Exhibition">
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div>
+      <h4>Corporate Office</h4>
+      <p>Suite B-5, Ballygunge Park Tower,<br> Kolkata - 700019</p>
+    </div>
+    <div>
+      <h4>Ahmedabad Office</h4>
+      <p>12/AA, Swastik Chambers,<br> Ahmedabad - 380009</p>
+    </div>
+    <div>
+      <h4>Call Us</h4>
+      <p>+91 96748 05912</p>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <p>FB | IG | YT</p>
+    </div>
+  </footer>
+  <div class="copyright">&copy; 2025 Premier Schools Exhibition. All Rights Reserved.</div>
+
+  <!-- Slideshow Script -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      let slideIndex = 0;
+      const slides = document.querySelectorAll(".slideshow img");
+
+      function showSlides() {
+        slides.forEach(img => img.classList.remove("active"));
+        slides[slideIndex].classList.add("active");
+        slideIndex = (slideIndex + 1) % slides.length;
+      }
+
+      setInterval(showSlides, 3000);
+    });
+  </script>
+</body>
+</html>
